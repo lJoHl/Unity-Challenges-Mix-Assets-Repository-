@@ -263,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topBound: 30
   lowerBound: -10
+  lateralBound: 25
 --- !u!65 &7017699705620648701
 BoxCollider:
   m_ObjectHideFlags: 0
