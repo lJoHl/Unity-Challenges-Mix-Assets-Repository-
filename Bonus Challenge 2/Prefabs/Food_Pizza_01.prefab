@@ -114,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topBound: 30
   lowerBound: -10
+  lateralBound: 25
 --- !u!54 &2016247614840272060
 Rigidbody:
   m_ObjectHideFlags: 0
