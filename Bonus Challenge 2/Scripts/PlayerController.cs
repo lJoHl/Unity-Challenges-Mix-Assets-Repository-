@@ -2,27 +2,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float horizontalInput;
-    public float verticalInput;
+    private float horizontalInput;
+    private float verticalInput;
 
-    public float speed = 10;
+    private float speed = 10;
 
-    public float xLimit = 20;
-    public float zTopLimit = 5;
-    public float zLowerLimit = -1;
+    private float xLimit = 20;
+    private float zTopLimit = 5;
+    private float zLowerLimit = -1;
 
     public GameObject projectile;
 
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     private void Update()
     {
+        // allows the player to move horizontally within set limits
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
 
@@ -33,6 +27,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xLimit, transform.position.y, transform.position.z);
 
 
+        // allows the player to move vertically within set limits
         verticalInput = Input.GetAxis("Vertical");
         transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalInput);
 
@@ -43,7 +38,7 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y, zTopLimit);
 
 
-
+        // allows the player to throw food by pressing the space key
         if (Input.GetKeyDown(KeyCode.Space))
             Instantiate(projectile, transform.position, projectile.transform.rotation);
     }

@@ -5,21 +5,15 @@ public class DetectCollisions : MonoBehaviour
     private UI UIInDC;
 
 
-    // Start is called before the first frame update
     private void Start()
     {
         UIInDC = GameObject.Find("UserInterface").GetComponent<UI>();
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
+        // takes a life from the player when being rammed by an animal
         if (other.gameObject.name == "Player")
         {
             UIInDC.lives--;
@@ -28,7 +22,7 @@ public class DetectCollisions : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else
+        else // fill the animal's hunger bar by colliding with food
         {
             GetComponent<AnimalHungerBar>().FeedAnimal(1);
 

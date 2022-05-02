@@ -6,14 +6,14 @@ public class UI : MonoBehaviour
     public int score = 0;
 
 
-    // Start is called before the first frame update
     private void Start()
     {
         Debug.Log($"Lives: {lives}");
         Debug.Log($"Score: {score}");
     }
 
-    // Update is called once per frame
+
+    // Game over if lives run out
     private void Update()
     {
         if (lives <= 0)

@@ -2,18 +2,12 @@ using UnityEngine;
 
 public class DestroyOutOfBounds : MonoBehaviour
 {
-    public float topBound = 30;
-    public float lowerBound = -10;
-    public float lateralBound = 25;
+    private float topBound = 20;
+    private float lowerBound = -3;
+    private float lateralBound = 20;
 
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    // Eliminate objects that go out of the limits of the screen
     private void Update()
     {
         if (transform.position.z > topBound | transform.position.z < lowerBound | transform.position.x < -lateralBound | transform.position.x > lateralBound)

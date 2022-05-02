@@ -10,7 +10,7 @@ public class AnimalHungerBar : MonoBehaviour
 
     private UI UIInAHB;
 
-    // Start is called before the first frame update
+
     private void Start()
     {
         animalHungerSlider.maxValue = amountToBeFed;
@@ -20,13 +20,8 @@ public class AnimalHungerBar : MonoBehaviour
         UIInAHB = GameObject.Find("UserInterface").GetComponent<UI>();
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        
-    }
 
-
+    // Increase the score by feeding an animal
     public void FeedAnimal(int amount)
     {
         currentFedAmount += amount;
