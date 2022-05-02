@@ -25,16 +25,14 @@ public class DetectCollisions : MonoBehaviour
             UIInDC.lives--;
 
             Debug.Log($"Lives: {UIInDC.lives}");
+
+            Destroy(gameObject);
         }
         else
         {
-            UIInDC.score++;
-
-            Debug.Log($"Score: {UIInDC.score}");
+            GetComponent<AnimalHungerBar>().FeedAnimal(1);
 
             Destroy(other.gameObject);
         }
-
-        Destroy(gameObject);
     }
 }
