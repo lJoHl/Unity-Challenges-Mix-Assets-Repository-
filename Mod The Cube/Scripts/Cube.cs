@@ -4,7 +4,7 @@ public class Cube : MonoBehaviour
 {
     private MeshRenderer Renderer;
 
-    private float lowerLimit = 4;
+    private float lowerLimit = 3;
     private float topLimit = -30;
     private float rightLimit = 4;
     private float leftLimit = -10;
