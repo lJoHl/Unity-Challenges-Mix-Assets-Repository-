@@ -1,42 +1,45 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AnimalHungerBar : MonoBehaviour
+namespace BonusChallenge2
 {
-    public Slider animalHungerSlider;
-    public int amountToBeFed;
-
-    private int currentFedAmount = 0;
-
-    private UI UIInAHB;
-
-
-    private void Start()
+    public class AnimalHungerBar : MonoBehaviour
     {
-        animalHungerSlider.maxValue = amountToBeFed;
-        animalHungerSlider.value = 0;
-        animalHungerSlider.fillRect.gameObject.SetActive(false);
+        public Slider animalHungerSlider;
+        public int amountToBeFed;
 
-        UIInAHB = GameObject.Find("UserInterface").GetComponent<UI>();
-    }
+        private int currentFedAmount = 0;
+
+        private UI UIInAHB;
 
 
-    // Increase the score by feeding an animal
-    public void FeedAnimal(int amount)
-    {
-        currentFedAmount += amount;
-
-        animalHungerSlider.fillRect.gameObject.SetActive(true);
-        animalHungerSlider.value = currentFedAmount;
-
-        if (currentFedAmount >= amountToBeFed)
+        private void Start()
         {
-            UIInAHB.score += amountToBeFed;
+            animalHungerSlider.maxValue = amountToBeFed;
+            animalHungerSlider.value = 0;
+            animalHungerSlider.fillRect.gameObject.SetActive(false);
 
-            Debug.Log($"Score: {UIInAHB.score}");
-
-            Destroy(gameObject, 0.1f);
+            UIInAHB = GameObject.Find("UserInterface").GetComponent<UI>();
         }
-    }
 
+
+        // Increase the score by feeding an animal
+        public void FeedAnimal(int amount)
+        {
+            currentFedAmount += amount;
+
+            animalHungerSlider.fillRect.gameObject.SetActive(true);
+            animalHungerSlider.value = currentFedAmount;
+
+            if (currentFedAmount >= amountToBeFed)
+            {
+                UIInAHB.score += amountToBeFed;
+
+                Debug.Log($"Score: {UIInAHB.score}");
+
+                Destroy(gameObject, 0.1f);
+            }
+        }
+
+    }
 }

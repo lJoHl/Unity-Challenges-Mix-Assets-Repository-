@@ -1,25 +1,28 @@
 using UnityEngine;
 
-public class UI : MonoBehaviour
+namespace BonusChallenge2
 {
-    public int lives = 3;
-    public int score = 0;
-
-
-    private void Start()
+    public class UI : MonoBehaviour
     {
-        Debug.Log($"Lives: {lives}");
-        Debug.Log($"Score: {score}");
-    }
+        public int lives = 3;
+        public int score = 0;
 
 
-    // Game over if lives run out
-    private void Update()
-    {
-        if (lives <= 0)
+        private void Start()
         {
-            Debug.Log("Game Over");
-            Time.timeScale = 0; 
+            Debug.Log($"Lives: {lives}");
+            Debug.Log($"Score: {score}");
+        }
+
+
+        // Game over if lives run out
+        private void Update()
+        {
+            if (lives <= 0)
+            {
+                Debug.Log("Game Over");
+                Time.timeScale = 0;
+            }
         }
     }
 }

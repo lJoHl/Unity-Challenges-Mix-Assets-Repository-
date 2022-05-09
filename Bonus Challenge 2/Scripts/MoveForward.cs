@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class MoveForward : MonoBehaviour
+namespace BonusChallenge2
 {
-    private float moveForwardSpeed = 10;
-
-
-    // Moves food forward
-    private void Update()
+    public class MoveForward : MonoBehaviour
     {
-        transform.Translate(Vector3.forward * Time.deltaTime * moveForwardSpeed);
+        private float moveForwardSpeed = 10;
+
+
+        // Moves food forward
+        private void Update()
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * moveForwardSpeed);
+        }
     }
 }
