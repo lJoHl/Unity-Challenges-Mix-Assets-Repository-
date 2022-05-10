@@ -16,8 +16,18 @@ namespace challenge4
         public int enemyCount;
         public int waveCount = 1;
 
-
         public GameObject player;
+
+        public EnemyX enemy;
+
+
+        private void Start()
+        {
+            enemy = enemyPrefab.GetComponent<EnemyX>();
+
+            enemy.speed = 250;
+        }
+
 
         // Update is called once per frame
         void Update()
@@ -27,8 +37,8 @@ namespace challenge4
             if (enemyCount == 0)
             {
                 SpawnEnemyWave(waveCount);
+                enemy.speed += 50;
             }
-
         }
 
         // Generate random spawn position for powerups and enemy balls

@@ -17,6 +17,8 @@ namespace challenge4
         private float normalStrength = 10; // how hard to hit enemy without powerup
         private float powerupStrength = 25; // how hard to hit enemy with powerup
 
+        public ParticleSystem turboBoostParticle;
+
 
         void Start()
         {
@@ -32,6 +34,8 @@ namespace challenge4
 
             // Set powerup indicator position to beneath player
             powerupIndicator.transform.position = transform.position + new Vector3(0, -0.6f, 0);
+
+            turboBoost();
         }
 
         // If Player collides with powerup, activate powerup
@@ -76,6 +80,20 @@ namespace challenge4
         }
 
 
+        private void turboBoost()
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                speed = 1000;
 
+                turboBoostParticle.Play();
+            }
+            else
+            {
+                speed = 500;
+
+                turboBoostParticle.Stop();
+            }
+        }
     }
 }

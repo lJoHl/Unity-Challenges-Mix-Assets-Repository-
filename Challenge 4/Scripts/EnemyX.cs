@@ -6,7 +6,7 @@ namespace challenge4
 {
     public class EnemyX : MonoBehaviour
     {
-        private float speed = 300;
+        public float speed;
         private Rigidbody enemyRb;
         private GameObject playerGoal;
 
@@ -24,7 +24,6 @@ namespace challenge4
             // Set enemy direction towards player goal and move there
             Vector3 lookDirection = (playerGoal.transform.position - transform.position).normalized;
             enemyRb.AddForce(lookDirection * speed * Time.deltaTime);
-
         }
 
         private void OnCollisionEnter(Collision other)
