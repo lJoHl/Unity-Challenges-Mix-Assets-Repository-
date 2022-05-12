@@ -22,6 +22,9 @@ namespace bonusChallenge3
         public bool isOnGround;
         public bool gameOver;
 
+        private bool hasJumpOnce;
+        private bool hasJumpTwice;
+
 
         private void Start()
         {
@@ -49,21 +52,43 @@ namespace bonusChallenge3
 
                 isOnGround = false;
             }
+
+            if (Input.GetKeyUp(KeyCode.Space) & !isOnGround)
+            {
+                hasJumpOnce = true;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Space) & hasJumpOnce == true & hasJumpTwice == false & !gameOver)
+            {
+                playerRb.AddForce(Vector3.up * jumpForce / 2, ForceMode.Impulse);
+
+                playerAnim.Play("Running_Jump", 3, 0);
+
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
+
+                hasJumpTwice = true;
+            }
+
+            Debug.Log(hasJumpOnce);
         }
 
 
         private void OnCollisionEnter(Collision collision)
         {
             // usar un switch en esta parte
-            if (collision.gameObject.CompareTag("Ground")) // las particulas de correr salen si tocas el suelo luego de golpear una valla, arreglar con la variable gameOver
+            if (collision.gameObject.CompareTag("Ground") & !gameOver) // las particulas de correr salen si tocas el suelo luego de golpear una valla, arreglar con la variable gameOver
             {
                 dirtParticle.Play();
 
                 isOnGround = true;
+
+                hasJumpOnce = false;
+                hasJumpTwice = false;
             }
 
 
-            if (collision.gameObject.CompareTag("Obstacle"))
+            if (collision.gameObject.CompareTag("Obstacle") & !gameOver)
             {
                 gameOver = true;
                 Debug.Log("Game Over!");

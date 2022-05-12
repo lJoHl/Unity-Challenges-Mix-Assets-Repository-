@@ -4,7 +4,7 @@ namespace bonusChallenge3
 {
     public class SpawnManager : MonoBehaviour
     {
-        public GameObject obstacle;
+        public GameObject[] obstacles;
 
         private Vector3 spawnPos = new Vector3(25, 0, 0);
 
@@ -30,8 +30,10 @@ namespace bonusChallenge3
 
         private void SpawnObstacle()
         {
+            int obstacleIndex = Random.Range(0, obstacles.Length);
+
             if (playerControllerScript.gameOver == false) // cambiar por !playerControllerScript.gameOver
-                Instantiate(obstacle, spawnPos, obstacle.transform.rotation);
+                Instantiate(obstacles[obstacleIndex], spawnPos, obstacles[obstacleIndex].transform.rotation);
         }
     }
 }

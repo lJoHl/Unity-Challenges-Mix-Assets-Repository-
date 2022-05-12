@@ -695,7 +695,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d93513a72ec244d43a5fcbc0f98354b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 4292798739268174749, guid: c41b07a337efaf94381419cf45662764, type: 3}
+  obstacles:
+  - {fileID: 4292798739268174749, guid: c41b07a337efaf94381419cf45662764, type: 3}
+  - {fileID: 6770699143050124200, guid: 51ec13df981f4f542882507262e153a9, type: 3}
+  - {fileID: 633378914255673167, guid: bae5c0e62263566418c2768bd272e745, type: 3}
+  - {fileID: 9047272696662718656, guid: f080a7e5278082243826756275a1f8ea, type: 3}
 --- !u!4 &1554107226
 Transform:
   m_ObjectHideFlags: 0
