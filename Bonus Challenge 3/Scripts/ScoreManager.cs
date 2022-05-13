@@ -23,7 +23,6 @@ namespace bonusChallenge3
 
                 Debug.Log($"Score: {score}");
             }
-                
         }
     }
 }

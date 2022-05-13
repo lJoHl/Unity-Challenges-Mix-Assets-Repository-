@@ -8,7 +8,7 @@ namespace bonusChallenge3
 
         private Vector3 spawnObstaclesPos = new Vector3(25, 0, 0);
 
-        private float startDelay = 2;  // 5
+        private float startDelay = 3;  // 5
         private float repeatRate = 2;  // 3
 
         private PlayerController playerControllerScript; // PCInMV
