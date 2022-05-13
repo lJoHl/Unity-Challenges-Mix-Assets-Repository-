@@ -5,7 +5,7 @@ namespace bonusChallenge3
     public class PlayerController : MonoBehaviour
     {
         private Rigidbody playerRb;
-
+        
         private Animator playerAnim;
 
         public ParticleSystem explosionParticle; // se puede hacer privado?
@@ -24,6 +24,8 @@ namespace bonusChallenge3
 
         private bool hasJumpOnce;
         private bool hasJumpTwice;
+
+        public bool usingDash;
 
 
         private void Start()
@@ -70,7 +72,19 @@ namespace bonusChallenge3
                 hasJumpTwice = true;
             }
 
-            Debug.Log(hasJumpOnce);
+            
+            if (Input.GetKey(KeyCode.C) & isOnGround & !gameOver)
+            {
+                playerAnim.SetFloat("Speed_f", 2);
+
+                usingDash = true;
+            }
+            else
+            {
+                playerAnim.SetFloat("Speed_f", 1);
+
+                usingDash = false;
+            }
         }
 
 

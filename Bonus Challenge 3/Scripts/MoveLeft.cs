@@ -26,6 +26,9 @@ namespace bonusChallenge3
             //      transform.Translate(Vector3.left * Time.deltaTime * speed);
 
 
+            speed = (playerControllerScript.usingDash) ? 60 : 30;
+
+
             if (transform.position.x < leftBound & gameObject.CompareTag("Obstacle"))
                 Destroy(gameObject);
         }

@@ -6,7 +6,7 @@ namespace bonusChallenge3
     {
         public GameObject[] obstacles;
 
-        private Vector3 spawnPos = new Vector3(25, 0, 0);
+        private Vector3 spawnObstaclesPos = new Vector3(25, 0, 0);
 
         private float startDelay = 2;  // 5
         private float repeatRate = 2;  // 3
@@ -32,8 +32,11 @@ namespace bonusChallenge3
         {
             int obstacleIndex = Random.Range(0, obstacles.Length);
 
+
             if (playerControllerScript.gameOver == false) // cambiar por !playerControllerScript.gameOver
-                Instantiate(obstacles[obstacleIndex], spawnPos, obstacles[obstacleIndex].transform.rotation);
+            {
+                Instantiate(obstacles[obstacleIndex], spawnObstaclesPos, obstacles[obstacleIndex].transform.rotation);
+            }
         }
     }
 }
