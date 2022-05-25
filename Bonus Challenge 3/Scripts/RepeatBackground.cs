@@ -18,10 +18,9 @@ namespace bonusChallenge3
 
         private void Update()
         {
+            // resets the background position
             if (transform.position.x < startPos.x - repeatWidth)
-            {
                 transform.position = startPos;
-            }
         }
     }
 }

@@ -7,8 +7,8 @@ namespace bonusChallenge3
     {
         private PlayerController playerControllerScript;
 
-        public Transform startingPoint;
-        public float lerpSpeed; // que es lerp?
+        [SerializeField] private Transform startingPoint;
+        [SerializeField] private float lerpSpeed;
 
 
         private void Start()

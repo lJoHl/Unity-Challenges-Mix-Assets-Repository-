@@ -4,9 +4,10 @@ namespace bonusChallenge3
 {
     public class MoveLeft : MonoBehaviour
     {
-        private float speed = 30;
+        private PlayerController playerControllerScript;
 
-        private PlayerController playerControllerScript; //renombrar como PCInMV
+        private float speed;
+        private float dashSpeed;
 
         private float leftBound = -15;
 
@@ -14,21 +15,21 @@ namespace bonusChallenge3
         private void Start()
         {
             playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+
+            speed = 30;
+            dashSpeed = speed * 2;
         }
 
 
         private void Update()
         {
-            if (playerControllerScript.gameOver == false) // cambiar por !playerControllerScript.gameOver
+            if (!playerControllerScript.gameOver)
                 transform.Translate(Vector3.left * Time.deltaTime * speed);
 
-            // if (!GameObject.Find("Player").GetComponent<PlayerController>().gameOver)
-            //      transform.Translate(Vector3.left * Time.deltaTime * speed);
+            // controls speed value
+            speed = (playerControllerScript.usingDash) ? dashSpeed : speed;
 
-
-            speed = (playerControllerScript.usingDash) ? 60 : 30;
-
-
+            // destroy just obstacles out of bounds
             if (transform.position.x < leftBound & gameObject.CompareTag("Obstacle"))
                 Destroy(gameObject);
         }

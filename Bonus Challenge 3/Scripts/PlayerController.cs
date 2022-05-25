@@ -8,16 +8,15 @@ namespace bonusChallenge3
         
         private Animator playerAnim;
 
-        public ParticleSystem explosionParticle; // se puede hacer privado?
-        public ParticleSystem dirtParticle; // se puede hacer privado?
+        [SerializeField] private ParticleSystem explosionParticle; 
+        [SerializeField] private ParticleSystem dirtParticle; 
 
         private AudioSource playerAudio;
+        [SerializeField] private AudioClip jumpSound;
+        [SerializeField] private AudioClip crashSound;
 
-        public AudioClip jumpSound;
-        public AudioClip crashSound;
-
-        public float jumpForce;
-        public float gravityModifier;
+        [SerializeField] private float jumpForce;
+        [SerializeField] private float gravityModifier;
 
         public bool isOnGround;
         public bool gameOver;
@@ -42,47 +41,42 @@ namespace bonusChallenge3
 
         private void Update()
         {
+            // makes player jump
             if (Input.GetKeyDown(KeyCode.Space) & isOnGround & !gameOver)
             {
                 playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
 
                 playerAnim.SetTrigger("Jump_trig");
-
                 dirtParticle.Stop();
-
                 playerAudio.PlayOneShot(jumpSound, 1.0f);
 
                 isOnGround = false;
             }
 
+            // allow the player to jump twice
             if (Input.GetKeyUp(KeyCode.Space) & !isOnGround)
-            {
                 hasJumpOnce = true;
-            }
 
-
+            // makes player jump a second time
             if (Input.GetKeyDown(KeyCode.Space) & hasJumpOnce == true & hasJumpTwice == false & !gameOver)
             {
                 playerRb.AddForce(Vector3.up * jumpForce / 2, ForceMode.Impulse);
 
                 playerAnim.Play("Running_Jump", 3, 0);
-
                 playerAudio.PlayOneShot(jumpSound, 1.0f);
 
                 hasJumpTwice = true;
             }
 
-            
+            // allows the player to use a dash to increase it speed, and decrease it when the player is not using it
             if (Input.GetKey(KeyCode.C) & isOnGround & !gameOver)
             {
                 playerAnim.SetFloat("Speed_f", 2);
-
                 usingDash = true;
             }
             else
             {
                 playerAnim.SetFloat("Speed_f", 1);
-
                 usingDash = false;
             }
         }
@@ -90,31 +84,29 @@ namespace bonusChallenge3
 
         private void OnCollisionEnter(Collision collision)
         {
-            // usar un switch en esta parte
-            if (collision.gameObject.CompareTag("Ground") & !gameOver) // las particulas de correr salen si tocas el suelo luego de golpear una valla, arreglar con la variable gameOver
+            if (!gameOver)
             {
-                dirtParticle.Play();
+                switch(collision.gameObject.tag)
+                {
+                    case "Ground":
+                        dirtParticle.Play();
+                        isOnGround = true;
 
-                isOnGround = true;
+                        hasJumpOnce = false;
+                        hasJumpTwice = false;
+                        break;
 
-                hasJumpOnce = false;
-                hasJumpTwice = false;
-            }
+                    case "Obstacle":
+                        gameOver = true;
+                        Debug.Log("Game Over!");
 
-
-            if (collision.gameObject.CompareTag("Obstacle") & !gameOver)
-            {
-                gameOver = true;
-                Debug.Log("Game Over!");
-
-                playerAnim.SetBool("Death_b", true);
-                playerAnim.SetInteger("DeathType_int", 1);
-
-                explosionParticle.Play();
-
-                dirtParticle.Stop(); // SetACtive(false) evitara el error de las particulas activadas aun al perder
-
-                playerAudio.PlayOneShot(crashSound, 1.0f);
+                        playerAnim.SetBool("Death_b", true);
+                        playerAnim.SetInteger("DeathType_int", 1);
+                        explosionParticle.Play();
+                        dirtParticle.Stop();
+                        playerAudio.PlayOneShot(crashSound, 1.0f);
+                        break;
+                }
             }
         }
     }

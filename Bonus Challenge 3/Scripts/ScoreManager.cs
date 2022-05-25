@@ -4,9 +4,9 @@ namespace bonusChallenge3
 {
     public class ScoreManager : MonoBehaviour
     {
-        private int score = 0;
-
         private PlayerController playerControllerScript;
+
+        private int score = 0;
 
 
         private void Start()
@@ -17,6 +17,7 @@ namespace bonusChallenge3
 
         private void Update()
         {
+            // controls the increase of the score
             if (!playerControllerScript.gameOver)
             {
                 score += (playerControllerScript.usingDash) ? 2 : 1;
