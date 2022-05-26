@@ -10,10 +10,10 @@ namespace bonusChallenge4
 
         private GameObject player;
 
-        private float speed = 3.0f;
+        [SerializeField] private float speed = 3.0f;
 
 
-        void Start()
+        private void Start()
         {
             enemyRb = GetComponent<Rigidbody>();
 
@@ -21,7 +21,7 @@ namespace bonusChallenge4
         }
 
 
-        void Update()
+        private void Update()
         {
             Vector3 lookDirection = (player.transform.position - transform.position).normalized;
 

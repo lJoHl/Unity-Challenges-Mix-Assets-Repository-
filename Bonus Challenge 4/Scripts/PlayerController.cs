@@ -19,7 +19,7 @@ namespace bonusChallenge4
         public GameObject powerupIndicator;
 
 
-        void Start()
+        private void Start()
         {
             playerRb = GetComponent<Rigidbody>();
 
@@ -27,7 +27,7 @@ namespace bonusChallenge4
         }
 
 
-        void Update()
+        private void Update()
         {
             float forwardInput = Input.GetAxis("Vertical");
             playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
@@ -52,7 +52,7 @@ namespace bonusChallenge4
         }
 
 
-        IEnumerator PowerupCountdownRoutine()
+        private IEnumerator PowerupCountdownRoutine()
         {
             yield return new WaitForSeconds(7);
             hasPowerup = false;

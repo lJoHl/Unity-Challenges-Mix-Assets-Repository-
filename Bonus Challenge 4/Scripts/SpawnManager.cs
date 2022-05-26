@@ -6,7 +6,7 @@ namespace bonusChallenge4
 {
     public class SpawnManager : MonoBehaviour
     {
-        public GameObject enemyPrefab;
+        public GameObject[] enemyPrefabs;
         public GameObject powerupPrefab;
 
         private float spawnRange = 9.0f;
@@ -15,14 +15,14 @@ namespace bonusChallenge4
         public int waveNumber = 1;
 
 
-        void Start()
+        private void Start()
         {
             SpawnEnemyWave(waveNumber); // metodo innecesario
             Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
         }
 
 
-        void Update()
+        private void Update()
         {
             enemyCount = FindObjectsOfType<Enemy>().Length;
 
@@ -39,7 +39,9 @@ namespace bonusChallenge4
         {
             for (int i = 0; i < enemysToSpawn; i++)
             {
-                Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
+                int randomEnemy = Random.Range(0, enemyPrefabs.Length);
+
+                Instantiate(enemyPrefabs[randomEnemy], GenerateSpawnPosition(), enemyPrefabs[randomEnemy].transform.rotation);
             }
         } 
 

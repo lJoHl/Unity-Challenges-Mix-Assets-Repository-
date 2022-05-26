@@ -9,13 +9,13 @@ namespace bonusChallenge4
         public float rotationSpeed;
 
 
-        void Start()
+        private void Start()
         {
 
         }
 
 
-        void Update()
+        private void Update()
         {
             float horizontalInput = Input.GetAxis("Horizontal");
             transform.Rotate(Vector3.up * Time.deltaTime * rotationSpeed * horizontalInput);
