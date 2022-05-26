@@ -18,6 +18,11 @@ namespace bonusChallenge4
 
         public GameObject powerupIndicator;
 
+        public PowerUpType currentPowerUp = PowerUpType.None;
+        public GameObject rocketPrefab;
+        private GameObject tmpRocket;
+        private Coroutine powerupCountdown;
+
 
         private void Start()
         {
@@ -34,6 +39,9 @@ namespace bonusChallenge4
 
             powerupIndicator.transform.position = transform.position + new Vector3(0, -0.52f, 0);
             //powerupIndicator.SetActive(hasPowerup ? true : false);
+
+            if (currentPowerUp == PowerUpType.Rockets && Input.GetKeyDown(KeyCode.F))
+                LaunchRockets();
         }
 
 
@@ -42,12 +50,17 @@ namespace bonusChallenge4
             if (other.CompareTag("Powerup"))
             {
                 hasPowerup = true;
+                currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
 
                 Destroy(other.gameObject);
 
                 powerupIndicator.gameObject.SetActive(true); //remplazar por un ternario
 
-                StartCoroutine(PowerupCountdownRoutine());
+                if (powerupCountdown != null)
+                {
+                    StopCoroutine(powerupCountdown);
+                }
+                powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
             }
         }
 
@@ -56,6 +69,7 @@ namespace bonusChallenge4
         {
             yield return new WaitForSeconds(7);
             hasPowerup = false;
+            currentPowerUp = PowerUpType.None;
             powerupIndicator.gameObject.SetActive(false); //remplazar por un ternario
         }
 
@@ -66,12 +80,23 @@ namespace bonusChallenge4
 
             Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
 
-            if (collision.gameObject.CompareTag("Enemy") & hasPowerup)
+            if (collision.gameObject.CompareTag("Enemy") & currentPowerUp == PowerUpType.Pushback)
             {
                 enemyRb.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
 
-                Debug.Log($"Collided with {collision.gameObject.name} with powerup set to {hasPowerup}");
+                Debug.Log("Player collided with: " + collision.gameObject.name + " withpowerup set to " + currentPowerUp.ToString());
             }
         }
+
+
+        private void LaunchRockets()
+        {
+            foreach (var enemy in FindObjectsOfType<Enemy>())
+            {
+                tmpRocket = Instantiate(rocketPrefab, transform.position + Vector3.up, Quaternion.identity);
+                tmpRocket.GetComponent<RocketBehaviour>().Fire(enemy.transform);
+            }
+        }
+
     }
 }
