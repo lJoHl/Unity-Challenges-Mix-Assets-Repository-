@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace bonusChallenge4
@@ -10,21 +9,22 @@ namespace bonusChallenge4
 
         private GameObject focalPoint;
 
-        public float speed = 5.0f;
+        [SerializeField] private float speed = 5.0f;
 
-        public bool hasPowerup = false;
+        private bool hasPowerup = false;
 
-        private float powerupStrength = 15.0f;
-        public GameObject powerupIndicator;
-        public PowerUpType currentPowerUp = PowerUpType.None;
-        public GameObject rocketPrefab;
-        private GameObject tmpRocket;
+        [SerializeField] private GameObject powerupIndicator;
+        private PowerUpType currentPowerUp = PowerUpType.None;
         private Coroutine powerupCountdown;
+        private float powerupStrength = 15.0f;
 
-        public float hangTime;
-        public float smashSpeed;
-        public float explosionForce;
-        public float explosionRadius;
+        [SerializeField] private GameObject rocketPrefab;
+        private GameObject tmpRocket;
+
+        [SerializeField] private float hangTime;
+        [SerializeField] private float smashSpeed;
+        [SerializeField] private float explosionForce;
+        [SerializeField] private float explosionRadius;
         private bool smashing = false;
         private float floorY;
 
@@ -43,20 +43,27 @@ namespace bonusChallenge4
             playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
 
             powerupIndicator.transform.position = transform.position + new Vector3(0, -0.52f, 0);
-            //powerupIndicator.SetActive(hasPowerup ? true : false);
 
-            if (currentPowerUp == PowerUpType.Rockets && Input.GetKeyDown(KeyCode.F))
-                LaunchRockets();
-
-            if (currentPowerUp == PowerUpType.Smash & Input.GetKeyDown(KeyCode.Space) & !smashing)
+            // allows active a powerup based on its type
+            switch (currentPowerUp)
             {
-                smashing = true;
-                StartCoroutine(Smash());
-            }
+                case PowerUpType.Rockets:
+                    if (Input.GetKeyDown(KeyCode.F))
+                        LaunchRockets();
+                    break;
 
+                case PowerUpType.Smash:
+                    if (Input.GetKeyDown(KeyCode.Space) & !smashing)
+                    {
+                        smashing = true;
+                        StartCoroutine(Smash());
+                    }
+                    break;
+            }
         }
 
 
+        // Active powerup effects
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Powerup"))
@@ -65,27 +72,27 @@ namespace bonusChallenge4
                 currentPowerUp = other.gameObject.GetComponent<PowerUp>().powerUpType;
 
                 Destroy(other.gameObject);
-
-                powerupIndicator.gameObject.SetActive(true); //remplazar por un ternario
+                powerupIndicator.gameObject.SetActive(true);
 
                 if (powerupCountdown != null)
-                {
                     StopCoroutine(powerupCountdown);
-                }
                 powerupCountdown = StartCoroutine(PowerupCountdownRoutine());
             }
         }
 
 
+        // Disable powerup effect after awhile
         private IEnumerator PowerupCountdownRoutine()
         {
             yield return new WaitForSeconds(7);
+
             hasPowerup = false;
             currentPowerUp = PowerUpType.None;
-            powerupIndicator.gameObject.SetActive(false); //remplazar por un ternario
+            powerupIndicator.gameObject.SetActive(false);
         }
 
 
+        // Establish the behaviour of pushback powerup
         private void OnCollisionEnter(Collision collision)
         {
             Rigidbody enemyRb = collision.gameObject.GetComponent<Rigidbody>();
@@ -93,14 +100,11 @@ namespace bonusChallenge4
             Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
 
             if (collision.gameObject.CompareTag("Enemy") & currentPowerUp == PowerUpType.Pushback)
-            {
                 enemyRb.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
-
-                Debug.Log("Player collided with: " + collision.gameObject.name + " withpowerup set to " + currentPowerUp.ToString());
-            }
         }
 
 
+        // Establish the behaviour of rockets powerup and its target
         private void LaunchRockets()
         {
             foreach (var enemy in FindObjectsOfType<Enemy>())
@@ -111,34 +115,35 @@ namespace bonusChallenge4
         }
 
 
+        // Establish the behaviour of smash powerup
         private IEnumerator Smash()
         {
             var enemies = FindObjectsOfType<Enemy>();
-            //Store the y position before taking off
-            floorY = transform.position.y;
-            //Calculate the amount of time we will go up
-            float jumpTime = Time.time + hangTime;
+
+            floorY = transform.position.y;  // store the y position before taking off
+            float jumpTime = Time.time + hangTime;  // calculate the amount of time we will go up
+
+            // move the player up while still keeping their x velocity.
             while (Time.time < jumpTime)
             {
-                //move the player up while still keeping their x velocity.
                 playerRb.velocity = new Vector2(playerRb.velocity.x, smashSpeed);
                 yield return null;
             }
-            //Now move the player down
+
+            // move the player down
             while (transform.position.y > floorY)
             {
                 playerRb.velocity = new Vector2(playerRb.velocity.x, -smashSpeed * 2);
                 yield return null;
             }
-            //Cycle through all enemies.
+
+            // apply an explosion force that originates from our position.
             for (int i = 0; i < enemies.Length; i++)
             {
-                //Apply an explosion force that originates from our position.
                 if (enemies[i] != null)
-                    enemies[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce,
-                    transform.position, explosionRadius, 0.0f, ForceMode.Impulse);
+                    enemies[i].GetComponent<Rigidbody>().AddExplosionForce(explosionForce, transform.position, explosionRadius, 0.0f, ForceMode.Impulse);
             }
-            //We are no longer smashing, so set the boolean to false
+
             smashing = false;
         }
     }

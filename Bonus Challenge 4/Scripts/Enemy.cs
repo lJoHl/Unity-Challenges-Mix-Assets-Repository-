@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace bonusChallenge4
@@ -10,14 +8,14 @@ namespace bonusChallenge4
 
         private GameObject player;
 
-        [SerializeField] private float speed = 3.0f;
-
-        public bool isBoss = false;
-        public float spawnInterval;
-        private float nextSpawn;
-        public int miniEnemySpawnCount;
         private SpawnManager spawnManager;
 
+        [SerializeField] private float speed = 3.0f;
+
+        [SerializeField] private bool isBoss = false;
+        [SerializeField] private float spawnInterval;
+        private float nextSpawn;
+        public int miniEnemySpawnCount;
 
 
         private void Start()
@@ -33,10 +31,11 @@ namespace bonusChallenge4
 
         private void Update()
         {
+            // make enemies chase the player
             Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-
             enemyRb.AddForce(lookDirection * speed);
 
+            // spawn mini enemies
             if (isBoss)
             {
                 if (Time.time > nextSpawn)
@@ -46,6 +45,7 @@ namespace bonusChallenge4
                 }
             }
 
+            // destroy entities out of bounds
             if (transform.position.y < -10)
                 Destroy(gameObject);
         }
