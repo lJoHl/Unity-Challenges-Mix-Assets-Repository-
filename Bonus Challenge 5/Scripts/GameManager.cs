@@ -23,6 +23,10 @@ namespace BonusChallenge5
 
         public bool isGameActive;
 
+        public TextMeshProUGUI livesText;
+        private int lives;
+
+
 
         private void Start()
         {
@@ -33,6 +37,18 @@ namespace BonusChallenge5
         {
 
         }
+
+
+        public void UpdateLives(int livesToChange)
+        {
+            lives += livesToChange;
+            livesText.text = "Lives: " + lives;
+            if (lives <= 0)
+            {
+                GameOver();
+            }
+        }
+
 
 
         IEnumerator SpawnTarget()
@@ -80,6 +96,8 @@ namespace BonusChallenge5
             UpdateScore(0);
 
             titleScreen.SetActive(false);
+
+            UpdateLives(3);
         }
     }
 }
