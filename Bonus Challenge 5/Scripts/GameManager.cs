@@ -26,6 +26,9 @@ namespace BonusChallenge5
         public TextMeshProUGUI livesText;
         private int lives;
 
+        public GameObject pauseScreen;
+        private bool paused;
+
 
 
         private void Start()
@@ -35,7 +38,11 @@ namespace BonusChallenge5
 
         private void Update()
         {
-
+            //Check if the user has pressed the P key
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                ChangePaused();
+            }
         }
 
 
@@ -99,5 +106,23 @@ namespace BonusChallenge5
 
             UpdateLives(3);
         }
+
+
+        void ChangePaused()
+        {
+            if (!paused)
+            {
+                paused = true;
+                pauseScreen.SetActive(true);
+                Time.timeScale = 0;
+            }
+            else
+            {
+                paused = false;
+                pauseScreen.SetActive(false);
+                Time.timeScale = 1;
+            }
+        }
+
     }
 }
