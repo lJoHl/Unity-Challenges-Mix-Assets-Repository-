@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,33 +5,25 @@ namespace BonusChallenge5
 {
     public class DifficultyButton : MonoBehaviour
     {
+        private GameManager gameManager;
+
         private Button button;
 
-        private GameManager gameManagerScript;
-
-        public int difficulty;
+        [SerializeField] private int difficulty;
 
 
         private void Start()
         {
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
             button = GetComponent<Button>();
             button.onClick.AddListener(SetDifficulty);
-
-            gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
         }
 
 
-        private void Update()
+        private void SetDifficulty()
         {
-
-        }
-
-
-        void SetDifficulty()
-        {
-            Debug.Log($"{button.gameObject.name} was clicked");
-
-            gameManagerScript.StartGame(difficulty);
+            gameManager.StartGame(difficulty);
         }
     }
 }

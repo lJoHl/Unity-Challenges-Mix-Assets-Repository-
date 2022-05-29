@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace BonusChallenge5
@@ -8,9 +6,9 @@ namespace BonusChallenge5
     {
         private GameManager gameManager;
 
-        public ParticleSystem explosionParticle;
-
         private Rigidbody targetRb;
+
+        [SerializeField] private ParticleSystem explosionParticle;
 
         private float minSpeed = 12;
         private float maxSpeed = 16;
@@ -35,23 +33,22 @@ namespace BonusChallenge5
             transform.position = RandomSpawnPos();
         }
 
-        private void Update()
-        {
 
+        private Vector3 RandomForce()
+        {
+            return Vector3.up * Random.Range(minSpeed, maxSpeed);
         }
 
-        /*
-        private void OnMouseDown()
+        private float RandomTorque()
         {
-            if (gameManager.isGameActive)
-            {
-                Destroy(gameObject);
-                Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
-
-                gameManager.UpdateScore(pointValue);
-            }
+            return Random.Range(-maxTorque, maxTorque);
         }
-        */
+
+        private Vector3 RandomSpawnPos()
+        {
+            return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
+        }
+
 
         private void OnTriggerEnter(Collider other)
         {
@@ -66,26 +63,12 @@ namespace BonusChallenge5
         {
             if (gameManager.isGameActive)
             {
-                Destroy(gameObject);
                 Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+
                 gameManager.UpdateScore(pointValue);
+
+                Destroy(gameObject);
             }
-        }
-
-
-        Vector3 RandomForce()
-        {
-            return Vector3.up * Random.Range(minSpeed, maxSpeed);
-        }
-
-        float RandomTorque()
-        {
-            return Random.Range(-maxTorque, maxTorque);
-        }
-
-        Vector3 RandomSpawnPos()
-        {
-            return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
         }
     }
 }

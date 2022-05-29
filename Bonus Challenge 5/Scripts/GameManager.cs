@@ -9,39 +9,47 @@ namespace BonusChallenge5
 {
     public class GameManager : MonoBehaviour
     {
-        public List<GameObject> targets;
-
+        [SerializeField] private List<GameObject> targets;
         private float spawnRate = 1.0f;
 
-        public GameObject titleScreen;
+        [SerializeField] private GameObject titleScreen;
 
-        public TextMeshProUGUI scoreText;
+        [SerializeField] private TextMeshProUGUI scoreText;
         private int score = 0;
 
-        public TextMeshProUGUI gameOverText;
-        public Button restartButton;
+        [SerializeField] private TextMeshProUGUI livesText;
+        private int lives;
+
+        [SerializeField] private GameObject pauseScreen;
+        private bool paused;
+
+        [SerializeField] private TextMeshProUGUI gameOverText;
+        [SerializeField] private Button restartButton;
 
         public bool isGameActive;
 
-        public TextMeshProUGUI livesText;
-        private int lives;
 
-        public GameObject pauseScreen;
-        private bool paused;
-
-
-
-        private void Start()
+        public void StartGame(int difficulty)
         {
-            
+            isGameActive = true;
+            titleScreen.SetActive(false);
+
+            spawnRate /= difficulty;
+            StartCoroutine(SpawnTarget());
+
+            UpdateScore(0);
+            UpdateLives(3);
         }
 
-        private void Update()
+
+        private IEnumerator SpawnTarget()
         {
-            //Check if the user has pressed the P key
-            if (Input.GetKeyDown(KeyCode.P))
+            while (isGameActive)
             {
-                ChangePaused();
+                yield return new WaitForSeconds(spawnRate);
+
+                int index = Random.Range(0, targets.Count);
+                Instantiate(targets[index]);
             }
         }
 
@@ -50,65 +58,27 @@ namespace BonusChallenge5
         {
             lives += livesToChange;
             livesText.text = "Lives: " + lives;
+
             if (lives <= 0)
-            {
                 GameOver();
-            }
-        }
-
-
-
-        IEnumerator SpawnTarget()
-        {
-            while (isGameActive)
-            {
-                yield return new WaitForSeconds(spawnRate);
-
-                int index = Random.Range(0, targets.Count);
-
-                Instantiate(targets[index]);
-            }
         }
 
 
         public void UpdateScore(int scoreToAdd)
         {
-            score += scoreToAdd;    
+            score += scoreToAdd;
             scoreText.text = $"Score: {score}";
         }
 
 
-        public void GameOver()
+        private void Update()
         {
-            gameOverText.gameObject.SetActive(true);
-            restartButton.gameObject.SetActive(true);
-            isGameActive = false;
+            if (Input.GetKeyDown(KeyCode.P))
+                ChangePaused();
         }
 
 
-        public void RestartGame()
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
-
-        public void StartGame(int difficulty)
-        {
-            isGameActive = true;
-
-            spawnRate /= difficulty;
-
-            StartCoroutine(SpawnTarget());
-
-            UpdateScore(0);
-
-            titleScreen.SetActive(false);
-
-            UpdateLives(3);
-        }
-
-
-        void ChangePaused()
+        private void ChangePaused()
         {
             if (!paused)
             {
@@ -124,5 +94,19 @@ namespace BonusChallenge5
             }
         }
 
+
+        public void GameOver()
+        {
+            gameOverText.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+
+            isGameActive = false;
+        }
+
+
+        public void RestartGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
