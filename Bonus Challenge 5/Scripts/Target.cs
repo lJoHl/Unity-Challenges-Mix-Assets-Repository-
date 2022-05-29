@@ -40,7 +40,7 @@ namespace BonusChallenge5
 
         }
 
-
+        /*
         private void OnMouseDown()
         {
             if (gameManager.isGameActive)
@@ -51,7 +51,7 @@ namespace BonusChallenge5
                 gameManager.UpdateScore(pointValue);
             }
         }
-
+        */
 
         private void OnTriggerEnter(Collider other)
         {
@@ -59,6 +59,17 @@ namespace BonusChallenge5
                 gameManager.UpdateLives(-1);
 
             Destroy(gameObject);
+        }
+
+
+        public void DestroyTarget()
+        {
+            if (gameManager.isGameActive)
+            {
+                Destroy(gameObject);
+                Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation);
+                gameManager.UpdateScore(pointValue);
+            }
         }
 
 
