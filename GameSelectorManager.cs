@@ -12,14 +12,23 @@ public class GameSelectorManager : MenuManager
     [SerializeField] private TextMeshProUGUI gameTitle;   
 
 
-    private void ChangeGameId(int gameId)
+    public void ChangeGameId(int gameId)
     {
         currentGameId = gameId;
+
+        //Borrar?
+        UpdateGameTitle();
     }
 
 
     private void UpdateGameTitle()
     {
         gameTitle.text = gameTitles[currentGameId];
+    }
+
+
+    public void Play()
+    {
+        ChangeScene(currentGameId.ToString());
     }
 }

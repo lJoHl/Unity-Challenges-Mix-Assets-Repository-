@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     private GameObject canvas;
 
 
+
     protected void Awake()
     {
         canvas = GameObject.Find("Canvas");
@@ -34,7 +35,10 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        if (int.TryParse(sceneName, out int sceneNo))   //gameSelectorMenu Branch
+            SceneManager.LoadScene(sceneNo);            //gameSelectorMenu Branch
+        else                                            //gameSelectorMenu Branch
+            SceneManager.LoadScene(sceneName);
     }
 
 

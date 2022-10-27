@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 123951210}
   - component: {fileID: 123951209}
   m_Layer: 5
-  m_Name: TestButton (1)
+  m_Name: TestButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -476,7 +476,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 123951210}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075275272}
+        m_TargetAssemblyTypeName: GameSelectorManager, Assembly-CSharp
+        m_MethodName: ChangeGameId
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &123951210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,7 +540,7 @@ GameObject:
   - component: {fileID: 501211565}
   - component: {fileID: 501211564}
   m_Layer: 5
-  m_Name: TestButton
+  m_Name: TestButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -598,7 +610,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 501211565}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075275272}
+        m_TargetAssemblyTypeName: GameSelectorManager, Assembly-CSharp
+        m_MethodName: ChangeGameId
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &501211565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,7 +1025,7 @@ GameObject:
   - component: {fileID: 678816306}
   - component: {fileID: 678816305}
   m_Layer: 5
-  m_Name: TestButton (6)
+  m_Name: TestButton7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1071,7 +1095,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 678816306}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075275272}
+        m_TargetAssemblyTypeName: GameSelectorManager, Assembly-CSharp
+        m_MethodName: ChangeGameId
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 7
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &678816306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1694,14 +1730,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTitles:
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  gameTitle: {fileID: 0}
+  - Title 1
+  - Title 2
+  - Title 3
+  - Title 4
+  - Title 5
+  - Title 6
+  - Title 7
+  gameTitle: {fileID: 1784473811}
 --- !u!1 &1169167068
 GameObject:
   m_ObjectHideFlags: 0
@@ -2177,7 +2213,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1513774122}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075275272}
+        m_TargetAssemblyTypeName: GameSelectorManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1513774122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2229,7 +2277,7 @@ GameObject:
   - component: {fileID: 1537539881}
   - component: {fileID: 1537539880}
   m_Layer: 5
-  m_Name: TestButton (4)
+  m_Name: TestButton5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2299,7 +2347,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1537539881}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075275272}
+        m_TargetAssemblyTypeName: GameSelectorManager, Assembly-CSharp
+        m_MethodName: ChangeGameId
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1537539881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,7 +2816,7 @@ GameObject:
   - component: {fileID: 1744829112}
   - component: {fileID: 1744829111}
   m_Layer: 5
-  m_Name: TestButton (3)
+  m_Name: TestButton4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2826,7 +2886,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1744829112}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075275272}
+        m_TargetAssemblyTypeName: GameSelectorManager, Assembly-CSharp
+        m_MethodName: ChangeGameId
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1744829112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3165,7 +3237,7 @@ GameObject:
   - component: {fileID: 2000599659}
   - component: {fileID: 2000599658}
   m_Layer: 5
-  m_Name: TestButton (5)
+  m_Name: TestButton6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3235,7 +3307,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2000599659}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075275272}
+        m_TargetAssemblyTypeName: GameSelectorManager, Assembly-CSharp
+        m_MethodName: ChangeGameId
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 6
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2000599659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3330,7 +3414,7 @@ GameObject:
   - component: {fileID: 2108647686}
   - component: {fileID: 2108647685}
   m_Layer: 5
-  m_Name: TestButton (2)
+  m_Name: TestButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3400,7 +3484,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2108647686}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1075275272}
+        m_TargetAssemblyTypeName: GameSelectorManager, Assembly-CSharp
+        m_MethodName: ChangeGameId
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2108647686
 MonoBehaviour:
   m_ObjectHideFlags: 0
