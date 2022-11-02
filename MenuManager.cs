@@ -41,6 +41,11 @@ public class MenuManager : MonoBehaviour
             SceneManager.LoadScene(sceneName);
     }
 
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 
     protected virtual void EscAction()
     {
