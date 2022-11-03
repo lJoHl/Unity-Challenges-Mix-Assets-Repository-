@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -11,6 +12,8 @@ public class GameManager : MenuManager
     //[SerializeField] private TextMeshProUGUI rankedScorePosition;
     [SerializeField] private TextMeshProUGUI scoreText;
     private int score = 0;
+
+    [SerializeField] private GameObject pauseMenu;
 
     private void Lose1Live()
     {
@@ -30,8 +33,22 @@ public class GameManager : MenuManager
     }
 
 
-    protected override void EscAction()
+    public override void EscAction()
     {
-        
+        try
+        {
+            GameObject menu = GameObject.Find($"{pauseMenu.name}(Clone)");
+
+            if (menu.activeInHierarchy)
+            {
+                CloseMenu(menu);
+                Time.timeScale = 1;
+            }
+        }
+        catch
+        {
+            OpenMenu(pauseMenu);
+            Time.timeScale = 0;
+        }
     }
 }

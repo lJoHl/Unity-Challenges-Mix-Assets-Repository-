@@ -258,8 +258,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2146028113373782903}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: CloseMenu
+        m_TargetAssemblyTypeName: UserRegister, Assembly-CSharp
+        m_MethodName: EscAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

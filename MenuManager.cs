@@ -32,6 +32,11 @@ public class MenuManager : MonoBehaviour
         Destroy(gameObject);
     }
 
+    protected void CloseMenu(GameObject menu)
+    {
+        Destroy(menu);
+    }
+
 
     public void ChangeScene(string sceneName)
     {
@@ -47,7 +52,7 @@ public class MenuManager : MonoBehaviour
     }
 
 
-    protected virtual void EscAction()
+    public virtual void EscAction()
     {
        
     }

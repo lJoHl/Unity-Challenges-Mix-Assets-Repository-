@@ -596,3 +596,4 @@ MonoBehaviour:
   livesText: {fileID: 9008955546340823065}
   lives: 0
   scoreText: {fileID: 9008955546583935243}
+  pauseMenu: {fileID: 1579746821992162583, guid: 46ff18dcf5d4e0f46ac9739efd797b2d, type: 3}

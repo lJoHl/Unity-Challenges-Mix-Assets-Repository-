@@ -56,7 +56,7 @@ public class UserRegister : MenuManager
     }
 
 
-    protected override void EscAction()
+    public override void EscAction()
     {
         CloseMenu();
     }
