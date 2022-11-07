@@ -7,6 +7,8 @@ public class MenuManager : MonoBehaviour
 {
     private GameObject canvas;
 
+    private bool escLock;
+
 
 
     protected void Awake()
@@ -17,7 +19,7 @@ public class MenuManager : MonoBehaviour
 
     protected void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) & escLock == false)
             EscAction();
     }
 
@@ -38,6 +40,12 @@ public class MenuManager : MonoBehaviour
     }
 
 
+    public void ChangeActiveState(GameObject menu)
+    {
+        menu.SetActive(!menu.activeInHierarchy ? true : false);
+    }
+
+
     public void ChangeScene(string sceneName)
     {
         if (int.TryParse(sceneName, out int sceneNo))   //gameSelectorMenu Branch
@@ -51,6 +59,11 @@ public class MenuManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+
+    public void SetEscLock(bool value)
+    {
+        escLock = value;
+    }
 
     public virtual void EscAction()
     {
