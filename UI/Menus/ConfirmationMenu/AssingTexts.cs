@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class AssingTexts : MenuManager
+public class AssingTexts : MenuManager  //Remember to write comments
 {
     [SerializeField] private TextMeshProUGUI questionField;
     [SerializeField] private TextMeshProUGUI messageField;

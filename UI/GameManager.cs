@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MenuManager
+public class GameManager : MenuManager  //Remember to write comments
 {
     [SerializeField] private TextMeshProUGUI livesText;
     [SerializeField] private int lives;

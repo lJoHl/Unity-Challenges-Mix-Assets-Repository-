@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameSelectorManager : MenuManager
+public class GameSelectorManager : MenuManager  //Remember to write comments
 {
     private int[] gameIds = new int[8];
     private int currentGameId;

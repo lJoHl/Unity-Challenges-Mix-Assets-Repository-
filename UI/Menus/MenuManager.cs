@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MenuManager : MonoBehaviour
+public class MenuManager : MonoBehaviour    //Remember to write comments
 {
     private GameObject canvas;
 
@@ -29,7 +29,7 @@ public class MenuManager : MonoBehaviour
         Instantiate(menu, canvas.transform);
     }
 
-    public void CloseMenu()
+    public void CloseMenu() //Remove this method?  CloseMenu(gameobject) can be used instead
     {
         Destroy(gameObject);
     }
@@ -48,9 +48,9 @@ public class MenuManager : MonoBehaviour
 
     public void ChangeScene(string sceneName)
     {
-        if (int.TryParse(sceneName, out int sceneNo))   //gameSelectorMenu Branch
-            SceneManager.LoadScene(sceneNo);            //gameSelectorMenu Branch
-        else                                            //gameSelectorMenu Branch
+        if (int.TryParse(sceneName, out int sceneNo))   
+            SceneManager.LoadScene(sceneNo);            
+        else                                            
             SceneManager.LoadScene(sceneName);
     }
 
