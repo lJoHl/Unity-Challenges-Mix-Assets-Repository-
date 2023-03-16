@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 
-public class UserRegister : MenuManager //Remember to write comments
+public class PlayerRegister : MenuManager //Remember to write comments
 {
     [SerializeField] private TMP_InputField inputName;
     [SerializeField] private TextMeshProUGUI requirements;
