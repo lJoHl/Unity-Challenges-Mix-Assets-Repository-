@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 123951210}
   - component: {fileID: 123951209}
   m_Layer: 5
-  m_Name: TestButton2
+  m_Name: Game4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,7 +426,7 @@ RectTransform:
   m_Children:
   - {fileID: 533803899}
   m_Father: {fileID: 2096849508}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -484,7 +484,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 501211565}
   - component: {fileID: 501211564}
   m_Layer: 5
-  m_Name: TestButton1
+  m_Name: Game2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,7 +618,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 678816306}
   - component: {fileID: 678816305}
   m_Layer: 5
-  m_Name: TestButton7
+  m_Name: Game7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1057,7 +1057,7 @@ RectTransform:
   m_Children:
   - {fileID: 3503329}
   m_Father: {fileID: 2096849508}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1754,13 +1754,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTitles:
   - 
-  - Title 1
-  - Title 2
-  - Title 3
-  - Title 4
-  - Title 5
-  - Title 6
-  - Title 7
+  - 
+  - Feed the Stampede
+  - Balloons Explode
+  - Obstacle Runner
+  - Ball Match
+  - Sky Sumo
+  - Clicky Crates
+  - Whack A Food
   gameTitle: {fileID: 1784473811}
 --- !u!1 &1169167068
 GameObject:
@@ -2313,7 +2314,7 @@ GameObject:
   - component: {fileID: 1537539881}
   - component: {fileID: 1537539880}
   m_Layer: 5
-  m_Name: TestButton5
+  m_Name: Game5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2333,7 +2334,7 @@ RectTransform:
   m_Children:
   - {fileID: 1543983644}
   m_Father: {fileID: 2096849508}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2852,7 +2853,7 @@ GameObject:
   - component: {fileID: 1744829112}
   - component: {fileID: 1744829111}
   m_Layer: 5
-  m_Name: TestButton4
+  m_Name: Game6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2872,7 +2873,7 @@ RectTransform:
   m_Children:
   - {fileID: 1703997846}
   m_Father: {fileID: 2096849508}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2930,7 +2931,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
+          m_IntArgument: 6
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3009,7 +3010,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 140}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 320, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1784473811
 MonoBehaviour:
@@ -3273,7 +3274,7 @@ GameObject:
   - component: {fileID: 2000599659}
   - component: {fileID: 2000599658}
   m_Layer: 5
-  m_Name: TestButton6
+  m_Name: Game8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3293,7 +3294,7 @@ RectTransform:
   m_Children:
   - {fileID: 955305801}
   m_Father: {fileID: 2096849508}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3351,7 +3352,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 6
+          m_IntArgument: 8
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3423,12 +3424,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 501211563}
-  - {fileID: 123951208}
   - {fileID: 2108647684}
-  - {fileID: 1744829110}
+  - {fileID: 123951208}
   - {fileID: 1537539879}
-  - {fileID: 2000599657}
+  - {fileID: 1744829110}
   - {fileID: 678816304}
+  - {fileID: 2000599657}
   m_Father: {fileID: 1075275271}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3450,7 +3451,7 @@ GameObject:
   - component: {fileID: 2108647686}
   - component: {fileID: 2108647685}
   m_Layer: 5
-  m_Name: TestButton3
+  m_Name: Game3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3470,7 +3471,7 @@ RectTransform:
   m_Children:
   - {fileID: 26143708}
   m_Father: {fileID: 2096849508}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

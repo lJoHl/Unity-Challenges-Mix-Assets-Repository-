@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameSelectorManager : MenuManager  //Remember to write comments
 {
-    private int[] gameIds = new int[8];
+    private int[] gameIds = new int[9];
     private int currentGameId;
 
     [SerializeField] private string[] gameTitles;
